@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component } from "react"
+import "./App.css"
 
 class App extends Component {
 	state = {
@@ -7,78 +7,85 @@ class App extends Component {
 		hours: 0,
 		mins: 0,
 		secs: 0
-	};
+	}
 
-	targetDate = new Date("2020-02-21T00:00:00-0700");
-	interval;
+	targetDate = new Date("2020-02-21T00:00:00-0700")
+	interval
 
 	componentDidMount() {
 		this.interval = setInterval(() => {
-			const now = new Date().getTime();
-			const difference = this.targetDate - now;
+			const now = new Date().getTime()
+			const difference = this.targetDate - now
 
-			const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+			const days = Math.floor(difference / (1000 * 60 * 60 * 24))
 			const hours = Math.floor(
 				(difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-			);
-			const mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-			const secs = Math.floor((difference % (1000 * 60)) / 1000);
+			)
+			const mins = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+			const secs = Math.floor((difference % (1000 * 60)) / 1000)
 
 			this.setState({
 				days,
 				hours,
 				mins,
 				secs
-			});
-		}, 1000);
+			})
+		}, 1000)
 	}
 
 	componentWillUnmout() {
-		clearInterval(this.interval);
+		clearInterval(this.interval)
 	}
 
 	render() {
-		const { days, hours, mins, secs } = this.state;
+		const { days, hours, mins, secs } = this.state
 
-		document.title = `Countdown to Last of Us Part II Release Date | ${days}:${hours}:${mins}:${secs}`;
+		document.title = `Countdown to Last of Us Part II Release Date | ${days}:${hours}:${mins}:${secs}`
 
 		return (
 			<div className="App">
 				<div className="countdown">
-					<div>
-						<span className="days">
-							{days} <br /> Days
-						</span>
+					<div className="container">
+						<div className="row">
+							<div className="col-md-3 ">
+								<div className="countdown-box">
+									{days} <br /> Days
+								</div>
+							</div>
+							<div className="col-md-3 ">
+								<div className="countdown-box">
+									{hours} <br /> Hours
+								</div>
+							</div>
+							<div className="col-md-3 ">
+								<div className="countdown-box">
+									{mins} <br /> Minutes
+								</div>
+							</div>
+							<div className="col-md-3 ">
+								<div className="countdown-box">
+									{secs} <br /> Seconds
+								</div>
+							</div>
+						</div>
 					</div>
-					<div>
-						<span className="hours">
-							{hours}
-							<br /> Hours
-						</span>
-					</div>
-					<div>
-						<span className="mins">
-							{mins}
-							<br /> Minutes
-						</span>
-					</div>
-					<div>
-						<span className="secs">
-							{secs}
-							<br /> Seconds
-						</span>
-					</div>
+					<h3>
+						Until{" "}
+						<a
+							href="https://store.playstation.com/en-us/product/UP9000-CUSA07820_00-THELASTOFUSP2DLX"
+							target="_blank">
+							The Last of Us Part II
+						</a>{" "}
+						release day
+					</h3>
 				</div>
-				<h3>
-					Until <a href="#!">The Last of Us Part II</a> release day
-				</h3>
 
 				<footer>
-					By <a href="https://github.com/akshaykulkarni2007">Akshay Kulkarni</a>
+					<a href="https://github.com/akshaykulkarni2007">Akshay Kulkarni</a>
 				</footer>
 			</div>
-		);
+		)
 	}
 }
 
-export default App;
+export default App
